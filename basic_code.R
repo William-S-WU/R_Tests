@@ -35,10 +35,38 @@ print(randomnum)
 
 numbers2 <- c()
 
-# Use a for loop to add iteration numbers to the vector
-for (i in 1:10) {  # Adjust range for desired iterations
+#Create random array with for loop
+for (i in 1:10) {  
   randomnum <- tibble(value = sample(1:20, 1))
   rand <- randomnum$value
-  numbers2 <- c(numbers2, rand)  # Append random number
+  numbers2 <- c(numbers2, rand)  
 }
 print(numbers2)
+empty_array <- integer(length(numbers2))
+numbers3 <- numbers2
+for (i in 1:length(numbers2)){
+  empty_array[i] <- numbers3[i]
+  for (j in 1:length(numbers3)){
+    if (empty_array[i] >= numbers3[j]){
+      empty_array[i] <- numbers3[j]
+      jtemp <- j
+    }
+  }
+  numbers3[jtemp] <- 900
+}
+print(numbers2)
+print(empty_array)
+sorted <- sort(numbers2)
+print(sorted)
+
+
+#fill a empty df
+cube <- data.frame(matrix(NA, nrow = 20, ncol = 20))
+
+for (n in 1:20){
+  for (m in 1:20){
+    randomval <- tibble(value = sample(1:20, 1))
+    cube[n, m] <- randomval$value
+      
+  }
+}
